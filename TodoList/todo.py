@@ -1,5 +1,5 @@
 import sqlite3
-from bottle import route, run, template, request
+from bottle import route, run, template, request, static_file
 
 
 @route('/todo')
@@ -71,6 +71,12 @@ def show_item(item):
         return 'This item number does not exist!'
     else:
         return 'Task: %s' % result[0]
+
+
+@route('/help')
+def show_help():
+
+    return static_file('help.html', root='./')
 
 
 run(debug=True, reloader=True)
